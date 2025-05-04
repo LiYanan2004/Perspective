@@ -18,9 +18,6 @@ let package = Package(
         ),
     ],
     targets: [
-        .target(
-            name: "Perspective"
-        ),
-
+        .target(name: "Perspective"),
     ]
 )

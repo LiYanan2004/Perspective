@@ -55,7 +55,7 @@ public struct _WarpPerspectiveEffectViewModifier: ViewModifier {
                 return content
                     .distortionEffect(
                         Shader(
-                            function: ShaderLibrary.default.warpPerspective,
+                            function: ShaderLibrary.bundle(.module).warpPerspective,
                             arguments: [
                                 .float3(
                                     warpPerspective[0, 0], warpPerspective[0, 1], warpPerspective[0, 2]
