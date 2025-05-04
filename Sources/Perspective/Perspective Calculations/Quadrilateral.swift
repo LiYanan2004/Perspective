@@ -8,6 +8,7 @@
 
 import Foundation
 import simd
+import OSLog
 
 struct Quadrilateral {
     /// 1x3 vector for point1
@@ -61,7 +62,7 @@ struct Quadrilateral {
         let ptri = Triangle(self.v00, self.v10, self.v01)
         
         guard let Ap = canon.affineTransform(to: ptri) else {
-            print("Could not get affine transform for quadrilateral p")
+            logger.error("Could not get affine transform for quadrilateral p. Fallback to identity.")
             return matrix_identity_float3x3
         }
         
@@ -69,21 +70,21 @@ struct Quadrilateral {
         let qtri = Triangle(another.v00, another.v10, another.v01)
         
         guard let Aq = canon.affineTransform(to: qtri) else {
-            print("Could not get affine transform for quadrilateral q")
+            logger.error("Could not get affine transform for quadrilateral q. Fallback to identity.")
             return matrix_identity_float3x3
         }
         
         let InvAp = Ap.inverse
         
         if InvAp.determinant.isNaN {
-            print("Could not get inverse of affine transform for quadrilateral p")
+            logger.error("Could not get inverse of affine transform for quadrilateral p. Fallback to identity.")
             return matrix_identity_float3x3
         }
         
         let InvAq = Aq.inverse
         
         if InvAq.determinant.isNaN {
-            print("Could not get inverse of affine transform for quadrilateral q")
+            logger.error("Could not get inverse of affine transform for quadrilateral q. Fallback to identity.")
             return matrix_identity_float3x3
         }
         
@@ -107,8 +108,11 @@ struct Quadrilateral {
         let qconvex = t > 0
         
         if !pconvex || !qconvex {
-            print("p is \(pconvex ? "convex" : "NOT convex"), s = \(s)")
-            print("q is \(qconvex ? "convex" : "NOT convex"), t = \(t)")
+            logger.error("""
+            p is \(pconvex ? "convex" : "NOT convex"), s = \(s)"
+            logger.error("q is \(qconvex ? "convex" : "NOT convex"), t = \(t)
+            Fallback to identity.
+            """)
             return matrix_identity_float3x3
         }
         
@@ -135,3 +139,5 @@ struct Quadrilateral {
         return H
     }
 }
+
+fileprivate let logger = Logger(subsystem: "Perspective", category: "Quadrilateral")
