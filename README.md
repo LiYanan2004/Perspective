@@ -16,17 +16,13 @@ High performance, real-time distortion filter powered by Metal.
 
 You can use `warpPerspectiveEffect(topLeftPoint:bottomLeftPoint:bottomRightPoint:topRightPoint:)` on any SwiftUI view.
 
-It can also be used as an image filter, equivalent to `CIPerspectiveCorrection` from Core Image.
-
 ```swift
 @State private var topLeft: CGPoint = CGPoint(x: 0, y: 0)
 @State private var bottomLeft: CGPoint = CGPoint(x: 0, y: 1)
 @State private var bottomRight: CGPoint = CGPoint(x: 1, y: 1)
 @State private var topRight: CGPoint = CGPoint(x: 1, y: 0)
 
-Image(.sample)
-    .resizable()
-    .aspectRatio(contentMode: .fit)
+ContentView()
     .warpPerspectiveEffect(
         topLeftPoint: topLeft,
         bottomLeftPoint: bottomLeft,
@@ -34,6 +30,12 @@ Image(.sample)
         topRightPoint: topRight
     )
 ```
+
+It can also be used as an image filter, equivalent to `CIPerspectiveCorrection` from Core Image.
+
+Here is an example:
+
+![](Resources/warp-perspective.jpeg)
 
 ### Credits
 
