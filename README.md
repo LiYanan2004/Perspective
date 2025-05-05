@@ -39,7 +39,7 @@ Here is an example:
 
 ### Credits
 
-The calculation part of this package uses the algrithm from:
+The calculation part of this package uses the algorithm from:
 
 * [Perspective transform from quadrilateral to quadrilateral in Swift](https://rethunk.medium.com/perspective-transform-from-quadrilateral-to-quadrilateral-in-swift-5a9adf2175c3)
 * [Perspective transform from quadrilateral to quadrilateral in Swift using SIMD for matrix operations](https://rethunk.medium.com/perspective-transform-from-quadrilateral-to-quadrilateral-in-swift-using-simd-for-matrix-operations-15dc3f090860)
