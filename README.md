@@ -35,7 +35,7 @@ Image(.sample)
     )
 ```
 
-### Crediets
+### Credits
 
 The calculation part of this package uses the algrithm from:
 
