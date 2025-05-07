@@ -35,7 +35,7 @@ It can also be used as an image filter, equivalent to `CIPerspectiveCorrection` 
 
 Here is an example:
 
-![](Resources/warp-perspective.jpeg)
+![](Resources/warp-perspective-demo.gif)
 
 ### Credits
 
